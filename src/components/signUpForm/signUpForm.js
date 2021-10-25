@@ -1,18 +1,22 @@
-import { useState } from "react";
-import { Switch } from "react-router";
+import { useState, useEffect } from "react";
+// import { Switch } from "react-router";
 import s from "./signUpForm.module.css";
 
 export default function SignUpForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState(
+    JSON.parse(window.localStorage.getItem("email")) ?? ""
+  );
+  const [password, setPassword] = useState(
+    JSON.parse(window.localStorage.getItem("password")) ?? ""
+  );
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     switch (name) {
-      case email:
+      case "email":
         setEmail(value);
         break;
-      case password:
+      case "password":
         setPassword(value);
         break;
 
@@ -20,7 +24,13 @@ export default function SignUpForm() {
         return;
     }
   };
+  useEffect(() => {
+    window.localStorage.setItem("email", JSON.stringify(email));
+  }, [email]);
 
+  useEffect(() => {
+    window.localStorage.setItem("password", JSON.stringify(password));
+  }, [password]);
   return (
     <form className={s.form} autoComplete="off">
       <label className={s.label}>

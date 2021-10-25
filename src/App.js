@@ -1,8 +1,8 @@
 import { Switch, Route } from "react-router-dom";
 // import AppBar from "./components/AppBar/AppBar";
 import SignupForm from "./components/signUpForm/signUpForm";
-// import ColorPicker from "./components/ColorPicker/ColorPicker";
-// import Counter from "./components/Counter/Counter";
+import ColorPicker from "./components/ColorPicker/ColorPicker";
+import Counter from "./components/Counter/Counter";
 // import Clock from "./components/Clock/Clock";
 // import PokemonView from "./views/PokemonView";
 
@@ -34,14 +34,16 @@ export default function App() {
         </Route>
 
         <Route path="/colorpicker">
-          {/* <ColorPicker options={colorPickerOptions} /> */}
+          <ColorPicker options={colorPickerOptions} />
         </Route>
 
-        <Route path="/counter">{/* <Counter /> */}</Route>
+        <Route path="/counter">
+          <Counter />
+        </Route>
 
-        <Route path="/clock">{/* <Clock /> */}</Route>
+        {/* <Route path="/clock"><Clock /></Route> */}
 
-        <Route path="/pokemon">{/* <PokemonView /> */}</Route>
+        {/* <Route path="/pokemon"><PokemonView /></Route> */}
       </Switch>
     </div>
   );
