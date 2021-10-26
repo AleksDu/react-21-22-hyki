@@ -1,14 +1,10 @@
-import { useState, useEffect } from "react";
-// import { Switch } from "react-router";
+import useLocalStorage from "../../hooks/useLocalStorage";
 import s from "./signUpForm.module.css";
 
 export default function SignUpForm() {
-  const [email, setEmail] = useState(
-    JSON.parse(window.localStorage.getItem("email")) ?? ""
-  );
-  const [password, setPassword] = useState(
-    JSON.parse(window.localStorage.getItem("password")) ?? ""
-  );
+  const [email, setEmail] = useLocalStorage("email", "");
+
+  const [password, setPassword] = useLocalStorage("password", "");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,13 +20,7 @@ export default function SignUpForm() {
         return;
     }
   };
-  useEffect(() => {
-    window.localStorage.setItem("email", JSON.stringify(email));
-  }, [email]);
 
-  useEffect(() => {
-    window.localStorage.setItem("password", JSON.stringify(password));
-  }, [password]);
   return (
     <form className={s.form} autoComplete="off">
       <label className={s.label}>
